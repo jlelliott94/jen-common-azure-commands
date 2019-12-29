@@ -4,8 +4,11 @@
 
 # Module 1 Demo 5 - 
 
-# New Resource Lock
-New-AzResourceLock -LockName Posh-Delete-Lock -LockLevel CanNotDelete -ResourceGroupName Mod1Demo5-RG
+    # New Resource Lock
+    New-AzResourceLock -LockName Posh-Delete-Lock -LockLevel CanNotDelete -ResourceGroupName Mod1Demo5-RG
 
-# Get all Resource Locks
-Get-AzResourceLock
+    # Get all Resource Locks
+    Get-AzResourceLock
+
+    # Remove Resource Lock
+    Remove-AzResourceLock -LockName Posh-Delete-Lock -ResourceGroupName Mod1Demo5-RG
