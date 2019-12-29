@@ -1,5 +1,3 @@
-#CTRL SHIFT P TO CHANGE LANGUAGE
-
 #### Skillpipe ####
 
 ## Backfill commands that I haven't added yet! ##
@@ -11,5 +9,3 @@ New-AzResourceLock -LockName Posh-Delete-Lock -LockLevel CanNotDelete -ResourceG
 
 # Get all Resource Locks
 Get-AzResourceLock
-
-#Commit
