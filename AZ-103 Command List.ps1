@@ -11,3 +11,5 @@ New-AzResourceLock -LockName Posh-Delete-Lock -LockLevel CanNotDelete -ResourceG
 
 # Get all Resource Locks
 Get-AzResourceLock
+
+#Commit
