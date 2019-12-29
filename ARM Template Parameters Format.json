@@ -1,4 +1,4 @@
-"parameters": {
+"parameters"{
     "adminUsername": {
       "type": "string",
       "metadata": {
