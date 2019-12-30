@@ -2,6 +2,35 @@
 
 ## Backfill commands that I haven't added yet! ##
 
+# Module 1 Demo 1
+
+    # Basics
+    Get-Help
+    Get-Command
+    Get-Verb
+    # | ft -AutoSize (format to table)
+
+    # List subscriptions
+    Get-AzSubscription
+
+    # List Resource Grops
+    Get-AzResourceGroup
+
+# Module 1 Demo 2
+    # Install Az module and overwrite with new version if old one exists
+    Install-Module -Name az -AllowClobber
+    # Trust PS repository
+    Set-PSRepository -Name "internalSource" -InstallationPolicy -Trusted
+    # Connect to Azure
+    Connect-AzAccount
+    # Create Resource Group
+    New-AzResourceGroup -Name "Mod1Demo2"-RG -Location eastus
+    # Remove Resource Group
+    Remove-AzResourceGroup -Name "Mod1Demo2-RG"
+    # Assign tags to RG !!RESEARCH ONE COMMAND FOR MULTIPLE TAGS!!
+    Set-AzResourceGroup -Name "Mod1Demo2-RG" -Tag@{"skillpipe-module-number"="1"}
+    Set-AzResourceGroup -Name "Mod1Demo2-RG" -Tag@{"ms-resource-usage"="skillpipe-demo"}
+
 # Module 1 Demo 5 - 
 
     # New Resource Lock
