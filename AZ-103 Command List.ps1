@@ -58,6 +58,18 @@
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json"
     New-AzResourceGroupDeployment -Name "RGDeployment1" -ResourceGroupName "Mod1Demo7-RG" -TemplateUri $templateUri
 
+    # FROM MS DOCS SITE - https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-powershell
+    # New Az RG based on host input
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    # New AzRG Deployment w/ remote template
+    
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    # Add the below to include a remote parameter document
+    -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
+
     # Verify - list Az VMs
     Get-AzVM
 
