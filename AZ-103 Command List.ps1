@@ -86,3 +86,7 @@
 
     # Update VM with variable information from the above exampless
     Update-AzVM -ResourceGroupName $ResourceGroupName  -VM $vm
+
+# Module 2
+    # Generate RDP file for VM
+    Get-AzRemoteDesktopFile
