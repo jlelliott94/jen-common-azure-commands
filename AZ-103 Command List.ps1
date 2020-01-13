@@ -87,6 +87,64 @@
     # Update VM with variable information from the above exampless
     Update-AzVM -ResourceGroupName $ResourceGroupName  -VM $vm
 
-# Module 2
+# Module 2 Demo 1
     # Generate RDP file for VM
     Get-AzRemoteDesktopFile
+
+
+# Module 2 Demo 2
+    # Powershell generation of Virtual Machine
+
+    # Store entered creds as $cred
+    $cred = Get-Credential
+
+    # create initial VM config
+    $vm = New-AzVMConfig -VMName myVM -VMSize Standard_D1
+
+    # add OS info to config
+    $vm = Set-AzVMOperatingSystem `
+    -VM $vm `
+    -Windows `
+    -ComputerName myVM `
+    -Credential $cred `
+    -ProvisionVMAgent -EnableAutoUpdate 
+
+    # Add image info to VM config
+    $vm = Set-AzVMSourceImage `
+    -VM $vm `
+    -PublisherName MicrosoftWindowsServer `
+    -Offer WindowsServer `
+    -Skus 2016-Datacenter `
+    -Version latest
+
+    # Create new VM
+    New-AzVm `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myVM" `
+    -Location "East US" `
+    -VirtualNetworkName "myVnet" `
+    -SubnetName "mySubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -PublicIpAddressName "myPublicIpAddress" `
+    -OpenPorts 80,3389
+
+# Module 2 Demo 2
+    # create a resource group
+    New-AzResourceGroup -Name myResourceGroup -Location EastUS
+
+    # create the virtual machine 
+    # when prompted, provide a username and password to be used as the logon credentials for the VM
+    New-AzVm `
+        -ResourceGroupName "myResourceGroup" `
+        -Name "myVM" `
+        -Location "East US" `
+        -VirtualNetworkName "myVnet" `
+        -SubnetName "mySubnet" `
+        -SecurityGroupName "myNetworkSecurityGroup" `
+        -PublicIpAddressName "myPublicIpAddress" `
+        -OpenPorts 80,3389
+
+    #get public IP of VM
+    Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
+    #RDP to to public IP <Append retrieved public IP>
+    mstsc /v:publicIpAddress
