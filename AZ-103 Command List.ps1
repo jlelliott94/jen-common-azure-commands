@@ -177,7 +177,7 @@ configuration IISInstall
 
 
 
- #Random!
+ #Random / Unsorted!
 
  #New Azure Availability Set
  New-AzAvailabilitySet -ResourceGroupName "myRG" -Name "myAvailabilitySet" -Location "East US" -PlatformUpdateDomainCount 5 -PlatformFaultDomainCount 2
