@@ -148,3 +148,59 @@
     Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
     #RDP to to public IP <Append retrieved public IP>
     mstsc /v:publicIpAddress
+
+
+# Module 2 Demo 1 - Creating VM in Portal
+    #Install IIS
+    Install-WindowsFeature -name Web-Server -IncludeManagemntTools
+
+
+# Module 2 Demo 2 - Custom Script Extension and DSC
+
+# Run custom script extension against VM
+Set-AzVmCustomScriptExtension -FileUri https://scriptstore.blob.core.windows.net/scripts/Install_IIS.ps1 -Run "PowerShell.exe" -VmName vmName -ResourceGroupName resourceGroup -Location "location"
+
+# DSC .ps1 file
+configuration IISInstall
+{
+ Node “localhost”
+ {
+ WindowsFeature IIS
+ {
+ Ensure = “Present”
+ Name = “Web-Server”
+ } } }
+
+ # Module 2 Demo 3 - lab
+ # add VM to existing Availability set
+ New-AzVM -AvailabilitySetID "Name of Availability Set"
+
+
+
+ #Random!
+
+ #New Azure Availability Set
+ New-AzAvailabilitySet -ResourceGroupName "myRG" -Name "myAvailabilitySet" -Location "East US" -PlatformUpdateDomainCount 5 -PlatformFaultDomainCount 2
+
+
+ #Export resource group template
+ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+
+Export-AzResourceGroup -ResourceGroupName $resourceGroupName
+
+# Configure static private IP
+$Nic = Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "NetworkInterface1"
+$Nic.IpConfigurations[0].PrivateIpAddress = "10.0.1.20"
+$Nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
+$Nic.Tag = @{Name = "Name"; Value = "Value"}
+Set-AzureRmNetworkInterface -NetworkInterface $Nic
+
+# Configure static public IP
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+$publicIp.PublicIpAllocationMethod = "Static"
+Set-AzPublicIpAddress -PublicIpAddress $publicIp
+Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+
+# Identify available DNS name for Azure VM scale set deployment
+$rg = Get-AzResourceGroup -Name az1000301-RG
+Test-AzDnsAvailability -DomainNameLabel jenddlsname -Location $rg.Location
