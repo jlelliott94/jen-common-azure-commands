@@ -204,3 +204,10 @@ Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 # Identify available DNS name for Azure VM scale set deployment
 $rg = Get-AzResourceGroup -Name az1000301-RG
 Test-AzDnsAvailability -DomainNameLabel jenddlsname -Location $rg.Location
+
+# Create Azure Storage Account
+Get-AzLocation | select Location 
+$location = "eastus" 
+$resourceGroup = "mod3demo1-rg" 
+New-AzResourceGroup -Name $resourceGroup -Location $location 
+New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "mod3demo1" -Location $location -SkuName Standard_LRS -Kind StorageV2 
