@@ -5,3 +5,6 @@ az group list --query "[?starts_with(name,'az1000')].name" --output tsv | xargs 
 az group create --name storage-resource-group --location westus 
 az account list-locations --query "[].{Region:name}" --out table 
 az storage account create --name storagedemo --resource-group storage-resource-group --location westus --sku Standard_LRS --kind StorageV2
+
+# New Azure Storage Container
+New-AzStorageContainer
