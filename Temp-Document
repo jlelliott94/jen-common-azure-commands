@@ -1,0 +1,5 @@
+Get-AzLocation | select Location 
+$location = "eastus" 
+$resourceGroup = "mod3demo3-rg" 
+New-AzResourceGroup -Name $resourceGroup -Location $location 
+New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "mod3demo3" -Location $location -SkuName Standard_LRS -Kind StorageV2
