@@ -268,3 +268,23 @@ New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Servic
 
 # Create blob level SAS with full permissions
 New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd
+
+# create az network mod4demo1
+#	1. Create a virtual network. Use values as appropriate.
+$myVNet2 = New-AzVirtualNetwork -ResourceGroupName myResourceGroup -Location EastUS -Name myVNet2 -AddressPrefix 10.0.0.0/16 
+#	2. Verify your new virtual network information.
+Get-AzVirtualNetwork -Name myVNet2 
+#	3. Create a subnet. Use values as appropriate.
+$mySubnet2 = Add-AzVirtualNetworkSubnetConfig -Name mySubnet2 -AddressPrefix 10.0.0.0/24 -VirtualNetwork $myVNet2 
+#	4. Verify your new subnet information.
+Get-AzVirtualNetworkSubnetConfig -Name mySubnet2 -VirtualNetwork $myVNet2 
+#	5. Associate the subnet to the virtual network.
+$mySubnet2 | Set-AzVirtualNetwork 
+
+
+# DNS - retrieve zone and name server information - sec115par3
+# Retrieve the zone information
+$zone = Get-AzDnsZone –Name contoso.net –ResourceGroupName MyResourceGroup
+
+# Retrieve the name server records
+Get-AzDnsRecordSet –Name “@” –RecordType NS –Zone $zone
