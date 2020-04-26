@@ -11,4 +11,4 @@ foreach ($rg in $rgstodelete){
     Remove-AzResourceGroup -Name $rgname
 
 Write-Host "$rgname deleted successfully!"
-}
+} 
