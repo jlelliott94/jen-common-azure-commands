@@ -17,6 +17,10 @@ foreach ($rg in $rgstodelete){
 Write-Host "$rgname deleted successfully!"
 } 
 
+# Output table of current resource groups
+Write-Host "You now have the following Resource Groups:"
+Get-AzResourceGroup | ft
+
 # Improvements:
     # Automatically approve what is being deleted so don't need to hit Y every time loop runs
     # If/else statement for confirmation message in for loop based on conditional outcome
