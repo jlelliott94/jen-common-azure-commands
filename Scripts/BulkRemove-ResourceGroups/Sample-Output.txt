@@ -13,12 +13,12 @@ True
 test-rg2 deleted successfully!
 You now have the following Resource Groups:
 
-ResourceGroupName                 Location      ProvisioningState Tags TagsTable ResourceId
------------------                 --------      ----------------- ---- --------- ----------
-NetworkWatcherRG                  eastus        Succeeded                        /subscriptions/493fb8a7-cd05-4e6c-b777-1f3de7c9f9ce/resou... 
-cloud-shell-storage-southeastasia southeastasia Succeeded                        /subscriptions/493fb8a7-cd05-4e6c-b777-1f3de7c9f9ce/resou... 
-lab4-rg                           australiaeast Succeeded         {}             /subscriptions/493fb8a7-cd05-4e6c-b777-1f3de7c9f9ce/resou...
-lab4-rg2                          australiaeast Succeeded                        /subscriptions/493fb8a7-cd05-4e6c-b777-1f3de7c9f9ce/resou... 
+ResourceGroupName                 Location      ProvisioningState Tags TagsTable 
+-----------------                 --------      ----------------- ---- --------- 
+NetworkWatcherRG                  eastus        Succeeded                         
+cloud-shell-storage-southeastasia southeastasia Succeeded                         
+lab4-rg                           australiaeast Succeeded         {}             
+lab4-rg2                          australiaeast Succeeded                         
 
 
 PS > 
