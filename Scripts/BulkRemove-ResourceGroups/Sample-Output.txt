@@ -20,5 +20,4 @@ cloud-shell-storage-southeastasia southeastasia Succeeded
 lab4-rg                           australiaeast Succeeded         {}             
 lab4-rg2                          australiaeast Succeeded                         
 
-
 PS > 
