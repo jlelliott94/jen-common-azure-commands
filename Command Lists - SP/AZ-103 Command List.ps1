@@ -290,14 +290,6 @@ $zone = Get-AzDnsZone –Name contoso.net –ResourceGroupName MyResourceGroup
 Get-AzDnsRecordSet –Name “@” –RecordType NS –Zone $zone
 
 #mod5demo1 commands
+#remove all mod4 resource groups - see script .\BulkRemove-ResourceGroups.ps1
 
-#remove all mod4 resource groups
-
-$rgstodelete = Get-AzResourceGroup | Select-Object ResourceGroupName | Where-Object ResourceGroupName -like "*mod4*" 
-
-foreach ($rg in $rgstodelete){
-    $rgname = $rg.ResourceGroupName
-    Remove-AzResourceGroup -Name $rgname
-
-Write-Host "$r deleted successfully!"
-}
+Get-AzContext
