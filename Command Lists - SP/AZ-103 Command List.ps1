@@ -293,3 +293,12 @@ Get-AzDnsRecordSet –Name “@” –RecordType NS –Zone $zone
 #remove all mod4 resource groups - see script .\BulkRemove-ResourceGroups.ps1
 
 Get-AzContext
+# Add new vNet Gateway connection (use if in different subscriptions as can't do through portal!)
+Get-AzVirtualNetworkGatewayConnection
+
+# Get az virtual network gateway connection status and information
+Get-AzVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
+#results
+"connectionStatus": "Connected",
+"ingressBytesTransferred": 33509044,
+"egressBytesTransferred": 4142431
