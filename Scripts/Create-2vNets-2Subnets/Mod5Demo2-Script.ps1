@@ -1,5 +1,8 @@
 # This is a script I used to complete Module 5 Demo 2 in the Skillpipe Book for AZ-103
 
+# New resource group for module 5 demo 2
+New-AzResourceGroup -Name "mod5demo2-rg" -location australiaeast
+
 # New Subnet for vNet1
 $vnet1subnet1 = New-AzVirtualNetworkSubnetConfig -Name Subnet1 -AddressPrefix "10.0.0.0/25"
 # New GW subnet for vNet 1

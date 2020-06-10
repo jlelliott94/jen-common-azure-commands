@@ -218,8 +218,8 @@ $storageContext = New-AzStorageContext <storage-account-name> <storage-account-k
 # Create the file share, in this case “logs”
 $share = New-AzStorageShare logs -Context $storageContext
 
-# Enable Secure Transfer Required
-et-AzStorageAccount -Name <StorageAccountName> -ResourceGroupName <ResourceGroupName> -EnableHttpsTrafficOnly $True
+# Enae Secure Transfer Required
+Set-AzStorageAccount -Name <StorageAccountName> -ResourceGroupName <ResourceGroupName> -EnableHttpsTrafficOnly $True
 
 # Creat File Share, Retrieve Access Key, Create Context and Create File Share (Demo 4)
 # Gather storage acc name and key
@@ -302,3 +302,4 @@ Get-AzVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName My
 "connectionStatus": "Connected",
 "ingressBytesTransferred": 33509044,
 "egressBytesTransferred": 4142431
+
